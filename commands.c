@@ -1,4 +1,4 @@
-#include "BrainFuck.h"
+#include "brainfuck.h"
 
 
 // Command handler prototypes
@@ -16,15 +16,15 @@ bf_error cmd_jump_backward(bf_state*);
 
 const bf_command_info command_info[NUM_COMMANDS] = 
 {
-    // type,				code,	handler
-    { CMD_NEXT_CELL,        '>',	cmd_next_cell      },
-    { CMD_PREV_CELL,        '<',	cmd_prev_cell      },
-    { CMD_INCREMENT,        '+',	cmd_increment      },
-    { CMD_DECREMENT,        '-',	cmd_decrement      },
-    { CMD_PRINT_CELL,       '.',	cmd_print_cell     },
-    { CMD_INPUT_CELL,       ',',	cmd_input_cell     },
-    { CMD_JUMP_FORWARD,     '[',	cmd_jump_forward   },
-    { CMD_JUMP_BACKWARD,    ']',	cmd_jump_backward  },
+	// type,				code,	handler
+	{ CMD_NEXT_CELL,		'>',	cmd_next_cell	   },
+	{ CMD_PREV_CELL,		'<',	cmd_prev_cell	   },
+	{ CMD_INCREMENT,		'+',	cmd_increment	   },
+	{ CMD_DECREMENT,		'-',	cmd_decrement	   },
+	{ CMD_PRINT_CELL,		'.',	cmd_print_cell	   },
+	{ CMD_INPUT_CELL,		',',	cmd_input_cell	   },
+	{ CMD_JUMP_FORWARD,		'[',	cmd_jump_forward   },
+	{ CMD_JUMP_BACKWARD,	']',	cmd_jump_backward  },
 	{ CMD_CARET_RETURN,		'\r',	cmd_skip },
 	{ CMD_LINEFEED,			'\n',	cmd_skip }
 };
@@ -43,35 +43,35 @@ bf_error cmd_skip(bf_state* state)
 
 bf_error cmd_next_cell(bf_state* state)
 {
-    if (state->currentCell == state->lastCell)
-        return ERR_CELL_OUT_OF_RANGE;
+	if (state->currentCell == state->lastCell)
+		return ERR_CELL_OUT_OF_RANGE;
 
-    state->currentCell++;        
-    return ERR_SUCCESS;
+	state->currentCell++;		 
+	return ERR_SUCCESS;
 }
 
 
 bf_error cmd_prev_cell(bf_state* state)
 {
-    if (state->currentCell == state->firstCell)
-        return ERR_CELL_OUT_OF_RANGE;
+	if (state->currentCell == state->firstCell)
+		return ERR_CELL_OUT_OF_RANGE;
 
-    state->currentCell--;
-    return ERR_SUCCESS;
+	state->currentCell--;
+	return ERR_SUCCESS;
 }
 
 
 bf_error cmd_increment(bf_state* state)
 {
-    ++*state->currentCell;
-    return ERR_SUCCESS;
+	++*state->currentCell;
+	return ERR_SUCCESS;
 }
 
 
 bf_error cmd_decrement(bf_state* state)
 {
-    --*state->currentCell;
-    return ERR_SUCCESS;
+	--*state->currentCell;
+	return ERR_SUCCESS;
 }
 
 

@@ -1,4 +1,4 @@
-#include "BrainFuck.h"
+#include "brainfuck.h"
 
 
 const bf_error_info error_info[NUM_ERRORS] = 
@@ -23,7 +23,7 @@ void print_error(bf_state* state, bf_error error)
 
 	if (state != NULL)
 	{
-		printf(	"\nFatal error %d at position %d (\"%c\"): %s\n", 
+		printf( "\nFatal error %d at position %d (\"%c\"): %s\n", 
 			error, 
 			state->currentCommand - state->firstCommand + 1,
 			*state->currentCommand,

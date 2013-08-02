@@ -1,4 +1,4 @@
-#include "BrainFuck.h"
+#include "brainfuck.h"
 
 
 // Util prototypes
@@ -22,7 +22,7 @@ bf_error new_interpreter(char* sourcePath, bf_state** stateBuffer)
 		return status;
 	}
 
-	state->lastCommand = state->firstCommand +  state->codeSize - 1;
+	state->lastCommand = state->firstCommand +	state->codeSize - 1;
 	state->currentCommand = state->firstCommand;
 
 	status = allocate_stack(state);
@@ -144,7 +144,7 @@ long calculate_stack_size(bf_state* state, long* stackSize)
 {
 	long flag;
 	char* command;
-	char jumpForward, jumpBackward;	
+	char jumpForward, jumpBackward; 
 
 	jumpForward = command_info[CMD_JUMP_FORWARD].code;
 	jumpBackward = command_info[CMD_JUMP_BACKWARD].code;
